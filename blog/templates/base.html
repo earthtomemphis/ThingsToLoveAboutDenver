@@ -23,16 +23,23 @@
         
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+
+                {% if cat_menu %}
                 <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Categories
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Things to Do</a>
-                    <a class="dropdown-item" href="#">Where to Eat</a>
-                    <a class="dropdown-item" href="#">How to get Around</a>
+                    {% for item in cat_menu %}
+                    <a class="dropdown-item" href="{% url 'category' item %}">{{ item }}</a>
+                    {% endfor %}
                 </div>
                 </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'category-list' %}">Categories</a>
+                    </li>
+                {% endif %}
 
                 {% if user.is_authenticated %}
                 
