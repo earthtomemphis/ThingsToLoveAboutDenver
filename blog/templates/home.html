@@ -16,7 +16,7 @@
                 </small> 
             {% endif %}
         {% endif %}<br>
-    {{ post.body|slice:":200"|safe }}</li>
+    {{ post.snippet }}</li>
     <a href="{% url 'article-detail' post.pk %}"><small>(Read More)</small></a>
 {% endfor %}
 </ul>
