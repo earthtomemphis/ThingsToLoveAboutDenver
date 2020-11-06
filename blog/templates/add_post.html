@@ -3,15 +3,19 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-<h1>Add Post...</h1>
-<br><br>
-<div class="form-group">
-    <form method="POST" class="uniForm">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-secondary" id="P&R">Post</button>
-    </form>
-</div>
+    <h1>Add Post...</h1>
+    <br><br>
+    <div class="form-group">
+        <form method="POST" class="uniForm">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-secondary" id="P&R">Post</button>
+        </form>
+    </div>
+    <script>
+        var name = "{{ user.username }}";
+        document.getElementById("user").placeholder = name;
+    </script>
 {% else %}
 
 You don't have permission to access this page.
